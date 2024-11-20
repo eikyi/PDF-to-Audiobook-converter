@@ -1,5 +1,6 @@
 # importing required classes
 from pypdf import PdfReader
+from converter import Converter
 
 path = input("Input path to PDF file: ")
 # creating a pdf reader object
@@ -9,7 +10,9 @@ reader = PdfReader(path)
 print(len(reader.pages))
 
 # creating a page object
-page = reader.pages[0]
+pages = reader.pages
 
-# extracting text from page
-print(page.extract_text())
+#initialize the voice converter
+converter = Converter()
+#convert to audio
+converter.search(pages)
